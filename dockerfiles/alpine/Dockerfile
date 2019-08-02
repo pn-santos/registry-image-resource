@@ -16,7 +16,7 @@ RUN set -e; for pkg in $(go list ./...); do \
 
 FROM alpine:edge AS resource
 RUN apk add --no-cache bash tzdata ca-certificates unzip zip gzip tar
-COPY --from=builder assets/ /opt/resource/
+COPY --from=builder /assets/ /opt/resource/
 RUN chmod +x /opt/resource/*
 # Ensure /etc/hosts is honored
 # https://github.com/golang/go/issues/22846
